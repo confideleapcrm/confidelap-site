@@ -1,0 +1,118 @@
+[
+  {
+    "slug": "investor-relations",
+    "title": "Investor Relation Advisory",
+    "subtitle": "We bring deep expertise in investor relations advisory, taking the time to understand your unique business and competitive landscape for each client engagement.",
+    "description": "ConfideLeap Partners is recognized as one of the Top Investor Relations Advisory Firms, specializing in strategic investor advisory solutions — IR advisory, digital marketing, IPO communication, collateral development, and quarterly earnings activities.",
+    "icon": "chart-bar",
+    "color": "from-blue-500 to-indigo-600",
+    "features": [
+      { "title": "IR Strategy Development", "description": "We develop strategic roadmaps with actionable steps and KPIs to attract long-term investors and boost valuation against industry competitors." },
+      { "title": "Investor Targeting & Surveillance", "description": "Using cutting-edge technology, market insights, and analytical tools, we match companies with 'best fit' investors based on their unique investment attributes." },
+      { "title": "Strategic Positioning", "description": "We craft communications that clarify a company's strategic direction and growth potential, answering the key question: 'Why invest in this company?'" },
+      { "title": "Quarterly Earnings Preparation", "description": "We develop unified, strategic communications for quarterly earnings announcements, presentations, conference calls, and Q&A sessions." },
+      { "title": "Market Intelligence", "description": "We monitor industry news to assess the impact of market events on equity valuation and their influence on investment decisions." }
+    ],
+    "highlights": [
+      { "title": "Market Trends Analysis", "description": "Continuous tracking, analysis, and interpretation of market trends provide business leaders with actionable insights to make informed strategic and tactical decisions." },
+      { "title": "Sector Research", "description": "Comprehensive insights into industry trends, key drivers, and challenges help businesses effectively target sectors and make data-backed investment decisions." },
+      { "title": "Competitive Insights", "description": "In-depth competitor intelligence to analyze offerings, marketing strategies, and positioning, helping businesses stay ahead in a dynamic market landscape." }
+    ]
+  },
+  {
+    "slug": "digital-marketing",
+    "title": "Digital Marketing",
+    "subtitle": "Confide in a Digital Partner who helps your business thrive online.",
+    "description": "End-to-end digital marketing services for companies across diverse industries. We focus on turning clicks into customers, maximizing ROI, and driving measurable growth.",
+    "icon": "megaphone",
+    "color": "from-purple-500 to-pink-600",
+    "features": [
+      { "title": "Search Engine Optimization (SEO)", "description": "We use strategic keyword research and ethical SEO practices to boost your rankings and visibility. From keyword analysis to on-page/off-page optimization, we track results via Google Search Console to drive leads and conversions." },
+      { "title": "Web Design & Development", "description": "We create mobile-friendly, SEO-optimized websites that align with your goals. Our designs focus on key elements, clear CTAs, and seamless user interactions to boost engagement and conversions." },
+      { "title": "Social Media Marketing", "description": "Grow your audience and engagement with targeted campaigns. We analyze goals, benchmark competitors, and track behavior to create tailored brand strategies and paid ads." },
+      { "title": "User-Generated Content Marketing", "description": "Expand your reach with user-generated content strategies. We leverage authentic content to build trust, engagement, and brand loyalty." },
+      { "title": "Email Marketing", "description": "Stand out in inboxes with personalized, engaging campaigns. We optimize content to avoid spam filters and use compelling language to boost open rates and conversions." },
+      { "title": "Paid Marketing Campaigns", "description": "Drive revenue with paid campaigns on platforms like Google, Facebook, and LinkedIn. Our expertise ensures maximum engagement and ROI." },
+      { "title": "Influencer Marketing", "description": "Expand brand awareness and credibility with industry-specific influencers. We connect you with the right influencers to boost followers, engagement, and sales growth." },
+      { "title": "Performance Marketing", "description": "We run results-driven ads, tracking clicks to conversions in real-time. Pay for performance, not promises — let's scale your brand!" },
+      { "title": "Retention Marketing", "description": "Keep customers loyal with re-engagement strategies, personalized offers, and seamless experiences. More repeat sales, less drop-off — let's make them stay!" }
+    ],
+    "highlights": [
+      { "title": "Support Brand Value", "description": "Digital marketing helps expand your reach and make your brand stand out in a competitive market." },
+      { "title": "Maximize ROI", "description": "We optimize campaigns in real-time to maximize conversions and ensure higher returns for your business." },
+      { "title": "Drive More Traffic", "description": "We leverage cross-channel strategies to enhance user experience and maximize business opportunities." },
+      { "title": "Stay on Top", "description": "Use multiple marketing channels with a seamless funnel to maintain strong connectivity and engagement." },
+      { "title": "Increase Competition", "description": "Digital marketing empowers small and mid-sized businesses to compete with global enterprises." },
+      { "title": "Improve Conversion Rates", "description": "Attract quality leads, boost conversions, and drive growth for your brand's products and services." }
+    ]
+  },
+  {
+    "slug": "public-relations",
+    "title": "Public Relations",
+    "subtitle": "From media relations to brand launches, we're here to help you achieve your PR goals with confidence.",
+    "description": "Building Trust, Driving Growth — Together, let's uncover what makes your brand exceptional. From storytelling to crisis management, we deliver PR solutions that shape perceptions and create lasting impact.",
+    "icon": "newspaper",
+    "color": "from-emerald-500 to-teal-600",
+    "features": [
+      { "title": "Press Release Writing & Distribution", "description": "Craft impactful press releases and distribute them to relevant media outlets for maximum exposure." },
+      { "title": "Online Reputation Management", "description": "Build and maintain a positive brand image with our expert reputation management strategies." },
+      { "title": "Media Relations", "description": "Build strong relationships with the media to secure positive coverage and brand mentions." },
+      { "title": "Crisis Communication", "description": "Navigate brand challenges effectively with strategic crisis management and clear communication." },
+      { "title": "Brand Stories & Launches", "description": "Create engaging brand stories and execute memorable product or brand launches." },
+      { "title": "Influencer Marketing", "description": "We power your brand with authentic influencer partnerships for maximum impact." }
+    ],
+    "highlights": [
+      { "title": "Increased Brand Visibility", "description": "Build strong relationships with the media to secure positive coverage and brand mentions." },
+      { "title": "Enhanced Credibility", "description": "Establish your brand as an authoritative and trustworthy voice in your industry." },
+      { "title": "Targeted Audience Reach", "description": "Deliver your message to the right audience for maximum impact and engagement." },
+      { "title": "Lead Generation", "description": "Improve your website's search rankings with online press releases and media mentions." }
+    ]
+  },
+  {
+    "slug": "annual-report",
+    "title": "Annual Report",
+    "subtitle": "Shaping the Next Era of Report Making.",
+    "description": "At ConfideLeap, we craft impactful annual reports that go beyond data. We believe reports should inspire action, foster understanding, and drive progress.",
+    "icon": "document-text",
+    "color": "from-amber-500 to-orange-600",
+    "features": [
+      { "title": "Annual Report Content Creation", "description": "Craft compelling narratives that highlight your achievements and future vision." },
+      { "title": "Annual Report Design", "description": "Create visually stunning designs that reflect your brand's identity and professionalism." },
+      { "title": "Corporate Governance & Risk Management", "description": "Outline risks with mitigation strategies to reassure investors." },
+      { "title": "Chairman's Speech", "description": "Draft impactful speeches that communicate your leadership's vision and insights." },
+      { "title": "Management Discussion & Analysis (MDA)", "description": "Develop insightful MDA sections that provide clarity and depth to your report." },
+      { "title": "End-to-End Report Solutions", "description": "From content to design, we handle every aspect of your annual report creation." }
+    ],
+    "process": [
+      { "step": "01", "title": "Understand Your Business", "description": "We dive into your company's performance, goals, and investor messaging to ensure the report reflects your true story." },
+      { "step": "02", "title": "Structure the Content", "description": "We organise financials, operational highlights, governance details, and business updates into a clear, compliant framework." },
+      { "step": "03", "title": "Craft Clear Narratives", "description": "We write concise, investor-focused content (MD&A, leadership messages, ESG, etc.)." },
+      { "step": "04", "title": "Design With Precision", "description": "We translate content into a clean visual layout using charts, infographics, and modern design elements that make complex data easy to understand." },
+      { "step": "05", "title": "Review, Refine & Deliver", "description": "Every page goes through accuracy, compliance, and formatting checks before we deliver a polished, print-ready and exchange-ready final report." }
+    ],
+    "highlights": []
+  },
+  {
+    "slug": "podcast",
+    "title": "Podcast Solutions",
+    "subtitle": "Podcast Solutions – Where Brands Speak Loud And Clear.",
+    "description": "From concept to launch, we handle it all. Podcast scripting, remote or in-person recording, editing, and multi-platform promotion.",
+    "icon": "microphone",
+    "color": "from-rose-500 to-red-600",
+    "features": [
+      { "title": "Online & Offline Podcast", "description": "We offer both remote and in-person podcast recording setups." },
+      { "title": "Custom Video Editing", "description": "High-quality audio & video editing with branded intros, outros, and social-ready clips." },
+      { "title": "Full-Service Execution", "description": "From planning and scripting to shooting, editing, and publishing — we handle everything, end to end." },
+      { "title": "SEO & Analytics", "description": "Insights on audience engagement, drop-off, platform performance, and SEO rankings." },
+      { "title": "Cross-Platform Publishing", "description": "We publish and optimize episodes on all top podcast and video platforms." },
+      { "title": "Content Repurposing", "description": "Turn every episode into multi-format content across email, LinkedIn, Instagram, and blogs." }
+    ],
+    "process": [
+      { "step": "01", "title": "We Shape Your Idea", "description": "We define the right podcast format for your brand: founder-led, expert-driven, or narrative-based." },
+      { "step": "02", "title": "Recording and Production", "description": "We handle scripting, recording setup (remote or in-person), and sound and visual direction." },
+      { "step": "03", "title": "Content Creation", "description": "We provide titles, notes, short clips. We also edit your existing brand videos into powerful digital content." },
+      { "step": "04", "title": "Strategic Distribution", "description": "We publish and optimize your podcast across all major streaming platforms." }
+    ],
+    "highlights": []
+  }
+]

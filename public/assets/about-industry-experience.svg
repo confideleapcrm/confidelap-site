@@ -1,0 +1,53 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Industry Experience Illustration</title>
+  <desc id="desc">Abstract business district scene representing industry, infrastructure and growth.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e9f4f7"/>
+      <stop offset="100%" stop-color="#d6ebf1"/>
+    </linearGradient>
+    <linearGradient id="tower" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9fb8c2"/>
+      <stop offset="100%" stop-color="#7f99a4"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#b7d8e3" stop-opacity="0.45"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bg)"/>
+
+  <rect x="40" y="120" width="260" height="620" rx="16" fill="url(#tower)"/>
+  <rect x="340" y="80" width="190" height="680" rx="14" fill="#8ba6b1"/>
+  <rect x="560" y="150" width="240" height="590" rx="16" fill="#90aab4"/>
+  <rect x="835" y="100" width="310" height="670" rx="20" fill="#97b1bb"/>
+
+  <g opacity="0.72">
+    <rect x="72" y="160" width="196" height="520" rx="10" fill="url(#glass)"/>
+    <rect x="366" y="130" width="138" height="560" rx="10" fill="url(#glass)"/>
+    <rect x="592" y="192" width="176" height="500" rx="10" fill="url(#glass)"/>
+    <rect x="868" y="146" width="244" height="560" rx="12" fill="url(#glass)"/>
+  </g>
+
+  <path d="M0 690H1200V900H0V690Z" fill="#d9e7ec"/>
+  <path d="M0 760H1200V900H0V760Z" fill="#c9dce3"/>
+
+  <g fill="#7a919b">
+    <ellipse cx="170" cy="760" rx="46" ry="18"/>
+    <ellipse cx="290" cy="748" rx="52" ry="20"/>
+    <ellipse cx="710" cy="770" rx="44" ry="17"/>
+    <ellipse cx="950" cy="756" rx="50" ry="19"/>
+  </g>
+
+  <g fill="#4d6570">
+    <circle cx="170" cy="730" r="14"/>
+    <circle cx="290" cy="716" r="14"/>
+    <circle cx="710" cy="742" r="14"/>
+    <circle cx="950" cy="726" r="14"/>
+  </g>
+
+  <path d="M860 0L1200 0L1200 900L1020 900L860 0Z" fill="#ffffff" fill-opacity="0.18"/>
+  <path d="M945 0L1200 0L1200 900L1095 900L945 0Z" fill="#ffffff" fill-opacity="0.14"/>
+</svg>
