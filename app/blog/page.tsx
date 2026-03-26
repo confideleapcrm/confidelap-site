@@ -158,7 +158,6 @@ export default async function BlogPage() {
                         fontWeight: 700,
                         textTransform: "uppercase",
                         letterSpacing: "0.08em",
-                        color: accentColor,
                         background: `rgba(${accentRgb},0.92)`,
                         backdropFilter: "blur(6px)",
                         padding: "4px 10px",
