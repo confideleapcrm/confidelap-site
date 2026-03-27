@@ -328,37 +328,6 @@ function ClientCard({ client, large = false }: Readonly<{ client: Client; large?
   );
 }
 
-// ── Filter Pill ───────────────────────────────────────────────────────────────
-
-function FilterPill({
-  label,
-  active,
-  color,
-  onClick,
-}: Readonly<{ label: string; active: boolean; color?: string; onClick: () => void }>) {
-  const c = color ?? "#0ea5c6";
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      style={{
-        padding: "5px 14px",
-        borderRadius: "100px",
-        border: active ? `1px solid ${c}` : "1px solid rgba(18,52,63,0.14)",
-        background: active ? c : "rgba(18,52,63,0.03)",
-        color: active ? "#ffffff" : "#3e5963",
-        fontSize: "0.78rem",
-        fontWeight: 700,
-        cursor: "pointer",
-        transition: "all 0.16s ease",
-        whiteSpace: "nowrap",
-      }}
-    >
-      {label}
-    </button>
-  );
-}
-
 // ── Main Component ─────────────────────────────────────────────────────────────
 
 export default function ClientsShowcase({ clients }: Readonly<{ clients: Client[] }>) {
@@ -481,41 +450,82 @@ export default function ClientsShowcase({ clients }: Readonly<{ clients: Client[
               </div>
             )}
 
-            {/* Industry row */}
+            {/* Industry row — dropdown */}
             {industries.length > 0 && (
               <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap", marginBottom: services.length > 0 ? "14px" : 0 }}>
                 <span style={{ fontSize: "0.68rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#7a9099", width: "60px", flexShrink: 0 }}>Industry</span>
-                <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-                  {industries.map((ind) => {
-                    const m = getMeta(ind);
-                    return (
-                      <FilterPill
-                        key={ind}
-                        label={ind}
-                        active={industryFilter === ind}
-                        color={m.color}
-                        onClick={() => setIndustryFilter(industryFilter === ind ? null : ind)}
-                      />
-                    );
-                  })}
+                <div style={{ position: "relative", display: "inline-flex", alignItems: "center" }}>
+                  <select
+                    value={industryFilter ?? ""}
+                    onChange={(e) => setIndustryFilter(e.target.value || null)}
+                    style={{
+                      appearance: "none",
+                      WebkitAppearance: "none",
+                      padding: "6px 32px 6px 14px",
+                      borderRadius: "100px",
+                      border: industryFilter ? "1px solid #0ea5c6" : "1px solid rgba(18,52,63,0.14)",
+                      background: industryFilter ? "rgba(14,165,198,0.07)" : "rgba(18,52,63,0.03)",
+                      color: industryFilter ? "#0b7f9f" : "#3e5963",
+                      fontSize: "0.78rem",
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      outline: "none",
+                      minWidth: "160px",
+                    }}
+                  >
+                    <option value="">All Industries</option>
+                    {industries.map((ind) => (
+                      <option key={ind} value={ind}>{ind}</option>
+                    ))}
+                  </select>
+                  <svg
+                    width="12" height="12" viewBox="0 0 24 24" fill="none"
+                    stroke={industryFilter ? "#0ea5c6" : "#7a9099"}
+                    strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                    style={{ position: "absolute", right: "12px", pointerEvents: "none" }}
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
                 </div>
               </div>
             )}
 
-            {/* Services row */}
+            {/* Expertise row — dropdown */}
             {services.length > 0 && (
               <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
-                <span style={{ fontSize: "0.68rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#7a9099", width: "60px", flexShrink: 0 }}>Service</span>
-                <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-                  {services.map((svc) => (
-                    <FilterPill
-                      key={svc}
-                      label={svc}
-                      active={serviceFilter === svc}
-                      color="#6c47ff"
-                      onClick={() => setServiceFilter(serviceFilter === svc ? null : svc)}
-                    />
-                  ))}
+                <span style={{ fontSize: "0.68rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#7a9099", width: "60px", flexShrink: 0 }}>Expertise</span>
+                <div style={{ position: "relative", display: "inline-flex", alignItems: "center" }}>
+                  <select
+                    value={serviceFilter ?? ""}
+                    onChange={(e) => setServiceFilter(e.target.value || null)}
+                    style={{
+                      appearance: "none",
+                      WebkitAppearance: "none",
+                      padding: "6px 32px 6px 14px",
+                      borderRadius: "100px",
+                      border: serviceFilter ? "1px solid #6c47ff" : "1px solid rgba(18,52,63,0.14)",
+                      background: serviceFilter ? "rgba(108,71,255,0.07)" : "rgba(18,52,63,0.03)",
+                      color: serviceFilter ? "#6c47ff" : "#3e5963",
+                      fontSize: "0.78rem",
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      outline: "none",
+                      minWidth: "160px",
+                    }}
+                  >
+                    <option value="">All Expertise</option>
+                    {services.map((svc) => (
+                      <option key={svc} value={svc}>{svc}</option>
+                    ))}
+                  </select>
+                  <svg
+                    width="12" height="12" viewBox="0 0 24 24" fill="none"
+                    stroke={serviceFilter ? "#6c47ff" : "#7a9099"}
+                    strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                    style={{ position: "absolute", right: "12px", pointerEvents: "none" }}
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
                 </div>
               </div>
             )}

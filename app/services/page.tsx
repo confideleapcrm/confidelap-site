@@ -7,7 +7,7 @@ import { RippleButton } from "../../components/ui/multi-type-ripple-buttons";
 const darkRippleClass = "rounded-[10px] border border-[rgba(255,255,255,0.15)] bg-transparent font-semibold leading-[1.2]";
 
 export const metadata: Metadata = {
-  title: "Services We Provide | ConfideLeap",
+  title: "Expertise We Provide | ConfideLeap",
   description:
     "ConfideLeap offers Investor Relations Advisory, Digital Marketing, Public Relations, Annual Report, and Podcast Solutions — all under one strategic roof.",
 };
@@ -55,14 +55,14 @@ export default async function ServicesPage() {
             style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "6px 16px", borderRadius: "100px", background: "rgba(14,165,198,0.12)", border: "1px solid rgba(14,165,198,0.28)", marginBottom: "28px" }}
           >
             <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#12abc9" }} className="ping-dot" />
-            <span style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#7dd9ee" }}>Our Services</span>
+            <span style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#7dd9ee" }}>Our Expertise</span>
           </div>
 
           <h1
             className="anim-fade-up delay-100"
             style={{ fontFamily: "Outfit, sans-serif", fontSize: "clamp(2.4rem, 6vw, 5rem)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1.02, marginBottom: "24px", color: "#f0f8fa" }}
           >
-            Services{" "}
+            Expertise{" "}
             <span className="shimmer-text">We Provide</span>
           </h1>
 
@@ -171,7 +171,7 @@ export default async function ServicesPage() {
                       href={`/services/${service.slug}`}
                       style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "12px 22px", borderRadius: "10px", background: `linear-gradient(135deg, ${m.hex} 0%, rgba(${m.rgb},0.75) 100%)`, color: "#ffffff", fontFamily: "Manrope, sans-serif", fontWeight: 700, fontSize: "0.88rem", boxShadow: `0 8px 24px rgba(${m.rgb},0.28)`, transition: "all 0.25s ease", textDecoration: "none", whiteSpace: "nowrap" }}
                     >
-                      Explore Service
+                      Explore Expertise
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                     </Link>
                   </div>
@@ -195,7 +195,7 @@ export default async function ServicesPage() {
             <span style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#7dd9ee" }}>Unsure where to start?</span>
           </div>
           <h2 className="reveal" style={{ fontFamily: "Outfit, sans-serif", fontSize: "clamp(1.8rem, 4vw, 3.2rem)", fontWeight: 900, letterSpacing: "-0.03em", color: "#f0f8fa", marginBottom: "18px" }}>
-            Not sure which service is right for you?
+            Not sure which expertise is right for you?
           </h2>
           <p className="reveal" style={{ color: "rgba(200,230,240,0.68)", fontSize: "1.05rem", maxWidth: "480px", margin: "0 auto 36px", lineHeight: 1.75 }}>
             Talk to our experts and get a custom strategy built around your business goals.

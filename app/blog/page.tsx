@@ -89,7 +89,7 @@ export default async function BlogPage() {
             </Link>
             <RippleButton variant="hover" hoverRippleColor="rgba(14,165,198,0.35)" className={darkRippleClass}>
               <Link href="/services" style={{ display: "flex", alignItems: "center", gap: "8px", color: "rgba(200,235,242,0.8)", textDecoration: "none", padding: "12px 24px" }}>
-                Explore Services
+                Explore Expertise
               </Link>
             </RippleButton>
           </div>

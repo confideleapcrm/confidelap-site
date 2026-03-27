@@ -16,7 +16,7 @@
     { "label": "Home", "href": "/" },
     { "label": "About", "href": "/about" },
     {
-      "label": "Services",
+      "label": "Expertise",
       "href": "/services",
       "children": [
         { "label": "Investor Relation Advisory", "href": "/services/investor-relations" },
@@ -32,7 +32,7 @@
   ],
   "stats": [
     { "value": "18+", "label": "Clients Served" },
-    { "value": "5+", "label": "Services Offered" },
+    { "value": "5+", "label": "Expertise Offered" },
     { "value": "10+", "label": "Blog Articles" },
     { "value": "100%", "label": "Client Satisfaction" }
   ]

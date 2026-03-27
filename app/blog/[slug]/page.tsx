@@ -261,10 +261,10 @@ export default async function BlogPostPage({ params }: Props) {
 
               {/* Services shortcut */}
               <div style={{ padding: "20px 24px", borderRadius: "16px", background: "linear-gradient(135deg, rgba(14,165,198,0.08), rgba(8,127,158,0.06))", border: "1px solid rgba(14,165,198,0.2)" }}>
-                <p style={{ fontFamily: "Outfit, sans-serif", fontWeight: 700, fontSize: "0.9rem", color: "#0e2530", marginBottom: "8px" }}>Explore Our Services</p>
+                <p style={{ fontFamily: "Outfit, sans-serif", fontWeight: 700, fontSize: "0.9rem", color: "#0e2530", marginBottom: "8px" }}>Explore Our Expertise</p>
                 <p style={{ fontSize: "0.78rem", color: "#567079", lineHeight: 1.6, marginBottom: "14px" }}>IR Advisory, PR, Digital Marketing, Annual Reports & Podcasts.</p>
                 <Link href="/services" style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "0.8rem", fontWeight: 700, color: "#0ea5c6", textDecoration: "none" }}>
-                  View all services
+                  View all expertise
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </Link>
               </div>

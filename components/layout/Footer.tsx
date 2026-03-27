@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import siteData from '../../content/site.json';
 
-const services = siteData.nav.find((n) => n.label === 'Services')?.children ?? [];
+const services = siteData.nav.find((n) => n.label === 'Expertise')?.children ?? [];
 const quickLinks = [
   { label: 'About Us', href: '/about' },
   { label: 'Blog', href: '/blog' },
@@ -42,7 +42,7 @@ export default function Footer() {
             From investor outreach to annual reports, ConfideLeap is your all-in-one growth partner.
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/services" className="btn-outline">View All Services</Link>
+            <Link href="/services" className="btn-outline">View All Expertise</Link>
           </div>
         </div>
       </div>
@@ -104,7 +104,7 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h4 style={{ fontFamily: 'Manrope, sans-serif', fontWeight: 800, fontSize: '0.95rem', color: '#1f343b', marginBottom: '20px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-              Services
+              Expertise
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {services.map((s) => (

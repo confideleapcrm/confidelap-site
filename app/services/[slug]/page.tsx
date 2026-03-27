@@ -150,7 +150,7 @@ export default async function ServiceDetailPage({ params }: Readonly<Props>) {
           >
             <Link href="/" style={{ color: "rgba(180,215,228,0.6)", transition: "color 0.2s" }}>Home</Link>
             <span style={{ opacity: 0.4 }}>/</span>
-            <Link href="/services" style={{ color: "rgba(180,215,228,0.6)", transition: "color 0.2s" }}>Services</Link>
+            <Link href="/services" style={{ color: "rgba(180,215,228,0.6)", transition: "color 0.2s" }}>Expertise</Link>
             <span style={{ opacity: 0.4 }}>/</span>
             <span style={{ color: "rgba(180,215,228,0.9)" }}>{service.title}</span>
           </nav>
@@ -201,7 +201,7 @@ export default async function ServiceDetailPage({ params }: Readonly<Props>) {
                 What&apos;s Included
               </span>
               <h2 style={{ fontFamily: "Outfit, sans-serif", fontSize: "clamp(1.7rem, 3.5vw, 2.6rem)", fontWeight: 900, letterSpacing: "-0.03em", color: "#0e2530" }}>
-                Core Services
+                Core Expertise
               </h2>
             </div>
           </div>
@@ -379,7 +379,7 @@ export default async function ServiceDetailPage({ params }: Readonly<Props>) {
           <section className="section" style={{ background: "#ffffff" }}>
             <div className="container" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "48px", alignItems: "center" }}>
               <div className="reveal-left">
-                <span style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: m.hex, marginBottom: "10px" }}>Additional Services</span>
+                <span style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: m.hex, marginBottom: "10px" }}>Additional Expertise</span>
                 <h2 style={{ fontFamily: "Outfit, sans-serif", fontWeight: 900, fontSize: "clamp(1.6rem, 3vw, 2.4rem)", letterSpacing: "-0.03em", marginBottom: "16px", color: "#0e2530" }}>
                   Value-Added Support for Every Touchpoint
                 </h2>
@@ -644,7 +644,7 @@ export default async function ServiceDetailPage({ params }: Readonly<Props>) {
             </Link>
             <RippleButton variant="hover" hoverRippleColor="rgba(14,165,198,0.35)" className="rounded-[10px] border border-[rgba(255,255,255,0.15)] bg-transparent font-semibold leading-[1.2]">
               <Link href="/services" style={{ display: "flex", alignItems: "center", gap: "8px", color: "rgba(200,235,242,0.8)", textDecoration: "none", padding: "13px 28px" }}>
-                View All Services
+                View All Expertise
               </Link>
             </RippleButton>
           </div>

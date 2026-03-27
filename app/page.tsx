@@ -133,9 +133,9 @@ export default async function HomePage() {
               </h1>
 
               <p style={{ fontSize: "clamp(1rem, 1.8vw, 1.12rem)", color: "#294148", maxWidth: "620px", lineHeight: 1.65, marginBottom: "30px" }}>
-                We specialise in Investor relations advisor services, Public relations advisory,
-                Digital marketing advisory services, Annual report preparation services, and
-                Podcast production services tailored to elevate your financial potential.
+                We specialise in Investor relations advisory, Public relations advisory,
+                Digital marketing advisory, Annual report preparation, and
+                Podcast production expertise tailored to elevate your financial potential.
               </p>
 
               <div style={{ display: "flex", gap: "14px", flexWrap: "wrap", alignItems: "center" }}>
@@ -206,7 +206,7 @@ export default async function HomePage() {
           <div style={{ textAlign: "center", marginBottom: "50px" }}>
             <div className="badge" style={{ margin: "0 auto 16px" }}>What We Do</div>
             <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 800, marginBottom: "16px", color: "#ffffff" }}>
-              Advisory Services That Help You <span className="gradient-text">Grow With Confidence</span>
+              Advisory Expertise That Helps You <span className="gradient-text">Grow With Confidence</span>
             </h2>
             <p style={{ color: "#a8c5d1", fontSize: "1.05rem", maxWidth: "640px", margin: "0 auto" }}>
               Investor relations, public relations, digital marketing, annual reports, and podcast solutions delivered with one strategic voice.
@@ -242,7 +242,7 @@ export default async function HomePage() {
           <div style={{ marginTop: "28px", textAlign: "center" }}>
             <RippleButton variant="hover" hoverRippleColor="#0ea5c6" className={whiteRippleButtonClass}>
               <Link href="/services" style={{ display: "flex", alignItems: "center", gap: "8px", textDecoration: "none", color: "inherit", padding: "10px 20px" }}>
-                View All Services
+                View All Expertise
               </Link>
             </RippleButton>
           </div>

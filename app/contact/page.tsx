@@ -203,7 +203,7 @@ export default function ContactPage() {
 
           <p className="anim-fade-up delay-200" style={{ fontSize: "clamp(1rem, 2vw, 1.15rem)", color: "rgba(210,235,242,0.7)", maxWidth: "520px", lineHeight: 1.8 }}>
             Reach out for a personalized strategy session, partnership inquiry,
-            or any questions about our services.
+            or any questions about our expertise.
           </p>
         </div>
       </section>

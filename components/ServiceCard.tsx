@@ -172,7 +172,7 @@ export function ServiceCard({
               transition: "all 0.3s ease",
             }}
           >
-            Explore Service →
+            Explore Expertise →
           </span>
         </div>
       </div>

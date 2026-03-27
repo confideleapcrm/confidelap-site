@@ -35,7 +35,7 @@ const pillars = [
     ),
   },
   {
-    title: "Comprehensive Service Offering",
+    title: "Comprehensive Expertise Offering",
     desc: "From IPO advisory to financial reporting, we provide end-to-end investor relations support across every channel and touchpoint.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -116,7 +116,7 @@ export default function AboutPage() {
             </Link>
             <RippleButton variant="hover" hoverRippleColor="rgba(14,165,198,0.35)" className={darkRippleClass}>
               <Link href="/services" style={{ display: "flex", alignItems: "center", gap: "8px", color: "rgba(200,235,242,0.8)", textDecoration: "none", padding: "12px 24px" }}>
-                Explore Services
+                Explore Expertise
               </Link>
             </RippleButton>
           </div>
@@ -325,7 +325,7 @@ export default function AboutPage() {
             </Link>
             <RippleButton variant="hover" hoverRippleColor="rgba(14,165,198,0.35)" className={darkRippleClass}>
               <Link href="/services" style={{ display: "flex", alignItems: "center", gap: "8px", color: "#9ee6f4", textDecoration: "none", padding: "13px 28px" }}>
-                Explore Services
+                Explore Expertise
               </Link>
             </RippleButton>
           </div>

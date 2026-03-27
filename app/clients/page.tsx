@@ -119,7 +119,7 @@ export default async function ClientsPage() {
             </Link>
             <RippleButton variant="hover" hoverRippleColor="rgba(14,165,198,0.35)" className={darkRippleClass}>
               <Link href="/services" style={{ display: "flex", alignItems: "center", gap: "8px", color: "rgba(180,215,228,0.85)", textDecoration: "none", padding: "14px 32px" }}>
-                Explore Services
+                Explore Expertise
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
             </RippleButton>
