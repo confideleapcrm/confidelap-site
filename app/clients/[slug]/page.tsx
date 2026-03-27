@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getAllClients, getClientBySlug } from "../../../lib/content";
 import { RippleButton } from "../../../components/ui/multi-type-ripple-buttons";
+import { ClientDocuments } from "../../../components/ClientDocuments";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -21,14 +22,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const docTypeMeta: Record<string, { label: string; color: string; rgb: string; icon: string }> = {
-  "audit-report":           { label: "Audit Report",           color: "#0ea5c6", rgb: "14,165,198",  icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
-  "annual-report":          { label: "Annual Report",          color: "#8b5cf6", rgb: "139,92,246",  icon: "M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
-  "financial-statement":    { label: "Financial Statement",    color: "#10b981", rgb: "16,185,129",  icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
-  "compliance":             { label: "Compliance Document",    color: "#f59e0b", rgb: "245,158,11",  icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" },
-  "investor-presentation":  { label: "Investor Presentation",  color: "#3b82f6", rgb: "59,130,246",  icon: "M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" },
-  "other":                  { label: "Document",               color: "#6b7280", rgb: "107,114,128", icon: "M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" },
-};
 
 const industryColor: Record<string, string> = {
   Chemicals: "#3b82f6", Infrastructure: "#8b5cf6", Healthcare: "#10b981",
@@ -115,92 +108,13 @@ export default async function ClientDetailPage({ params }: Props) {
         <div className="container">
           <div style={{ marginBottom: "40px" }}>
             <span style={{ fontSize: "0.72rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.12em", color: "#0ea5c6", display: "block", marginBottom: "10px" }}>
-              Client Documents
+              Investor Documents
             </span>
             <h2 style={{ fontFamily: "Outfit, sans-serif", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.2rem)", letterSpacing: "-0.03em", color: "#0e2530" }}>
-              {docs.length > 0 ? `${docs.length} Document${docs.length > 1 ? "s" : ""} Available` : "No Documents Yet"}
+              {docs.length > 0 ? "Document Repository" : "No Documents Yet"}
             </h2>
           </div>
-
-          {docs.length === 0 ? (
-            <div style={{ textAlign: "center", padding: "80px 40px", background: "#ffffff", borderRadius: "20px", border: "1px solid rgba(14,165,198,0.12)" }}>
-              <div style={{ width: "56px", height: "56px", borderRadius: "16px", background: "rgba(14,165,198,0.08)", border: "1px solid rgba(14,165,198,0.2)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0ea5c6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
-                </svg>
-              </div>
-              <p style={{ fontFamily: "Outfit, sans-serif", fontWeight: 700, color: "#0e2530", marginBottom: "8px" }}>No documents uploaded yet</p>
-              <p style={{ fontSize: "0.875rem", color: "#567079" }}>Documents will appear here once uploaded in the CMS.</p>
-            </div>
-          ) : (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "20px" }}>
-              {docs.map((doc, i) => {
-                const meta = docTypeMeta[doc.type] ?? docTypeMeta.other;
-                return (
-                  <div
-                    key={i}
-                    className="reveal"
-                    style={{ background: "#ffffff", borderRadius: "20px", border: `1px solid rgba(${meta.rgb},0.15)`, overflow: "hidden", position: "relative" }}
-                  >
-                    {/* Top accent */}
-                    <div style={{ height: "3px", background: `linear-gradient(90deg, ${meta.color}, transparent)` }} />
-
-                    <div style={{ padding: "24px" }}>
-                      {/* Icon + type badge */}
-                      <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
-                        <div style={{ width: "44px", height: "44px", borderRadius: "12px", background: `rgba(${meta.rgb},0.1)`, border: `1px solid rgba(${meta.rgb},0.25)`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={meta.color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                            <path d={meta.icon} />
-                          </svg>
-                        </div>
-                        <span style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.09em", color: meta.color, background: `rgba(${meta.rgb},0.08)`, border: `1px solid rgba(${meta.rgb},0.2)`, padding: "3px 10px", borderRadius: "100px" }}>
-                          {meta.label}
-                        </span>
-                      </div>
-
-                      {/* Title */}
-                      <h3 style={{ fontFamily: "Outfit, sans-serif", fontWeight: 700, fontSize: "1rem", color: "#0e2530", lineHeight: 1.4, marginBottom: "8px" }}>
-                        {doc.title}
-                      </h3>
-
-                      {/* Date */}
-                      {doc.date && (
-                        <p style={{ fontSize: "0.78rem", color: "#7a9099", marginBottom: "8px" }}>
-                          {new Date(doc.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
-                        </p>
-                      )}
-
-                      {/* Description */}
-                      {doc.description && (
-                        <p style={{ fontSize: "0.82rem", color: "#567079", lineHeight: 1.65, marginBottom: "16px" }}>
-                          {doc.description}
-                        </p>
-                      )}
-
-                      {/* Actions */}
-                      <div style={{ display: "flex", gap: "10px", marginTop: "16px" }}>
-                        <a
-                          href={doc.fileUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ flex: 1, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "7px", padding: "10px 16px", borderRadius: "10px", background: `linear-gradient(135deg, ${meta.color}, rgba(${meta.rgb},0.75))`, color: "#ffffff", fontSize: "0.82rem", fontWeight: 700, textDecoration: "none", boxShadow: `0 4px 14px rgba(${meta.rgb},0.25)` }}
-                        >
-                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                          View PDF
-                        </a>
-                        <RippleButton variant="hover" hoverRippleColor="rgba(14,165,198,0.35)" className={`rounded-[10px] border border-[rgba(${meta.rgb},0.3)] bg-transparent font-semibold leading-[1.2] flex-1`}>
-                          <a href={`${doc.fileUrl}?dl=${encodeURIComponent(doc.title)}.pdf`} download style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "7px", color: meta.color, textDecoration: "none", padding: "10px 16px", fontSize: "0.82rem", width: "100%" }}>
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                            Download
-                          </a>
-                        </RippleButton>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
+          <ClientDocuments docs={docs} />
         </div>
       </section>
 

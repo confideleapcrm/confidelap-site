@@ -6,6 +6,77 @@ import { RippleButton } from "../../components/ui/multi-type-ripple-buttons";
 
 const darkRippleClass = "rounded-[10px] border border-[rgba(255,255,255,0.15)] bg-transparent font-semibold leading-[1.2]";
 
+type ContactForm = {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+};
+
+type ContactFormErrors = Partial<Record<keyof ContactForm, string>>;
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_REGEX = /^\+?[0-9()\-\s]{7,20}$/;
+
+const fieldValidators: Record<keyof ContactForm, (value: string) => string> = {
+  name: (value) => {
+    const trimmed = value.trim();
+    if (!trimmed) return "Name is required.";
+    if (trimmed.length < 2) return "Name must be at least 2 characters.";
+    return "";
+  },
+  email: (value) => {
+    const trimmed = value.trim();
+    if (!trimmed) return "Email is required.";
+    if (!EMAIL_REGEX.test(trimmed)) return "Enter a valid email address.";
+    return "";
+  },
+  phone: (value) => {
+    const trimmed = value.trim();
+    if (!trimmed) return "";
+    if (!PHONE_REGEX.test(trimmed)) return "Enter a valid phone number.";
+    return "";
+  },
+  subject: (value) => {
+    const trimmed = value.trim();
+    if (!trimmed) return "Subject is required.";
+    if (trimmed.length < 3) return "Subject must be at least 3 characters.";
+    return "";
+  },
+  message: (value) => {
+    const trimmed = value.trim();
+    if (!trimmed) return "Message is required.";
+    if (trimmed.length < 20) return "Message should be at least 20 characters.";
+    return "";
+  },
+};
+
+function getFieldError(key: keyof ContactForm, value: string) {
+  return fieldValidators[key](value);
+}
+
+function getFormErrors(values: ContactForm): ContactFormErrors {
+  const nextErrors: ContactFormErrors = {};
+  (Object.keys(values) as Array<keyof ContactForm>).forEach((key) => {
+    const error = getFieldError(key, values[key]);
+    if (error) nextErrors[key] = error;
+  });
+  return nextErrors;
+}
+
+function mergeFieldError(
+  prev: ContactFormErrors,
+  key: keyof ContactForm,
+  error: string,
+): ContactFormErrors {
+  if (!error) {
+    const { [key]: _, ...rest } = prev;
+    return rest;
+  }
+  return { ...prev, [key]: error };
+}
+
 const socials = [
   { label: "LinkedIn",   href: "https://www.linkedin.com/company/confideleap-partners" },
   { label: "Instagram",  href: siteData.social.instagram },
@@ -51,15 +122,36 @@ const contactItems = [
 ];
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [form, setForm] = useState<ContactForm>({ name: "", email: "", phone: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [formErrors, setFormErrors] = useState<ContactFormErrors>({});
 
-  const set = (key: keyof typeof form) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setForm((f) => ({ ...f, [key]: e.target.value }));
+  const set = (key: keyof ContactForm) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const value = e.target.value;
+    setForm((f) => ({ ...f, [key]: value }));
+
+    if (formErrors[key]) {
+      const nextError = getFieldError(key, value);
+      setFormErrors((prev) => mergeFieldError(prev, key, nextError));
+    }
+  };
+
+  const onBlurField = (key: keyof ContactForm) => () => {
+    const error = getFieldError(key, form[key]);
+    setFormErrors((prev) => mergeFieldError(prev, key, error));
+  };
 
   const submitForm = async () => {
+    const nextErrors = getFormErrors(form);
+    setFormErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrorMessage("Please correct the highlighted fields and try again.");
+      return;
+    }
+
     setSubmitting(true);
     setErrorMessage(null);
 
@@ -78,6 +170,7 @@ export default function ContactPage() {
       }
 
       setSubmitted(true);
+  setFormErrors({});
       setForm({ name: "", email: "", phone: "", subject: "", message: "" });
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
@@ -207,37 +300,42 @@ export default function ContactPage() {
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
                     <div>
                       <label htmlFor="name" className="form-label">Name *</label>
-                      <input id="name" type="text" className="form-input" placeholder="John Doe" required value={form.name} onChange={set("name")} />
+                      <input id="name" type="text" className="form-input" placeholder="John Doe" required value={form.name} onChange={set("name")} onBlur={onBlurField("name")} />
+                      {formErrors.name && <p style={{ marginTop: "6px", color: "#dc2626", fontSize: "0.78rem", fontWeight: 600 }}>{formErrors.name}</p>}
                     </div>
                     <div>
                       <label htmlFor="email" className="form-label">Email *</label>
-                      <input id="email" type="email" className="form-input" placeholder="john@company.com" required value={form.email} onChange={set("email")} />
+                      <input id="email" type="email" className="form-input" placeholder="john@company.com" required value={form.email} onChange={set("email")} onBlur={onBlurField("email")} />
+                      {formErrors.email && <p style={{ marginTop: "6px", color: "#dc2626", fontSize: "0.78rem", fontWeight: 600 }}>{formErrors.email}</p>}
                     </div>
                   </div>
 
                   {/* Phone */}
                   <div>
                     <label htmlFor="phone" className="form-label">Phone</label>
-                    <input id="phone" type="tel" className="form-input" placeholder="+91 9999 999 999" value={form.phone} onChange={set("phone")} />
+                    <input id="phone" type="tel" className="form-input" placeholder="+91 9999 999 999" value={form.phone} onChange={set("phone")} onBlur={onBlurField("phone")} />
+                    {formErrors.phone && <p style={{ marginTop: "6px", color: "#dc2626", fontSize: "0.78rem", fontWeight: 600 }}>{formErrors.phone}</p>}
                   </div>
 
                   {/* Subject */}
                   <div>
                     <label htmlFor="subject" className="form-label">Subject *</label>
-                    <input id="subject" type="text" className="form-input" placeholder="e.g. Investor Relations Inquiry" required value={form.subject} onChange={set("subject")} />
+                    <input id="subject" type="text" className="form-input" placeholder="e.g. Investor Relations Inquiry" required value={form.subject} onChange={set("subject")} onBlur={onBlurField("subject")} />
+                    {formErrors.subject && <p style={{ marginTop: "6px", color: "#dc2626", fontSize: "0.78rem", fontWeight: 600 }}>{formErrors.subject}</p>}
                   </div>
 
                   {/* Message */}
                   <div>
                     <label htmlFor="message" className="form-label">Message *</label>
-                    <textarea id="message" className="form-input" placeholder="Tell us about your business and how we can help..." required rows={5} value={form.message} onChange={set("message")} />
+                    <textarea id="message" className="form-input" placeholder="Tell us about your business and how we can help..." required rows={5} value={form.message} onChange={set("message")} onBlur={onBlurField("message")} />
+                    {formErrors.message && <p style={{ marginTop: "6px", color: "#dc2626", fontSize: "0.78rem", fontWeight: 600 }}>{formErrors.message}</p>}
                   </div>
 
-                  {errorMessage ? (
+                  {errorMessage && (
                     <p style={{ margin: 0, color: "#dc2626", fontSize: "0.85rem", fontWeight: 600 }}>
                       {errorMessage}
                     </p>
-                  ) : null}
+                  )}
 
                   <button
                     type="submit"

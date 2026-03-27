@@ -198,41 +198,6 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div
-            style={{
-              marginTop: "34px",
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "10px",
-              alignItems: "center",
-            }}
-          >
-            {[
-              "Investor Relations Advisory",
-              "Public Relations Advisory",
-              "Digital Marketing Advisory",
-              "Annual Report Preparation",
-              "Podcast Production",
-            ].map((item) => (
-              <span
-                key={item}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  padding: "8px 14px",
-                  borderRadius: "999px",
-                  border: "1px solid rgba(18, 52, 63, 0.16)",
-                  background: "rgba(255, 255, 255, 0.82)",
-                  fontSize: "0.8rem",
-                  color: "#3e5963",
-                  fontWeight: 600,
-                }}
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-
         </div>
       </section>
 

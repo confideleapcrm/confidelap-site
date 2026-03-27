@@ -76,6 +76,47 @@ export function Testimonials({ testimonials }: Readonly<TestimonialsProps>) {
   const [wheelDelta, setWheelDelta] = useState(0);
   const columnsRef = useRef<HTMLDivElement>(null);
 
+  // Scrollbar constants
+  const TRACK_H = 680;
+  const THUMB_H = 80;
+  const THUMB_TRAVEL = TRACK_H - THUMB_H;
+  const SCROLL_RANGE = 600;
+
+  const thumbTop = ((((wheelDelta * 0.6) % SCROLL_RANGE) + SCROLL_RANGE) % SCROLL_RANGE) / SCROLL_RANGE * THUMB_TRAVEL;
+
+  const isDraggingBar = useRef(false);
+  const dragStartY = useRef(0);
+  const dragStartDelta = useRef(0);
+
+  const handleThumbMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    isDraggingBar.current = true;
+    dragStartY.current = e.clientY;
+    dragStartDelta.current = wheelDelta;
+  };
+
+  const handleTrackClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(1, (e.clientY - rect.top - THUMB_H / 2) / THUMB_TRAVEL));
+    setWheelDelta((pct * SCROLL_RANGE) / 0.6);
+  };
+
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      if (!isDraggingBar.current) return;
+      const dy = e.clientY - dragStartY.current;
+      const pct = dy / THUMB_TRAVEL;
+      setWheelDelta(dragStartDelta.current + (pct * SCROLL_RANGE) / 0.6);
+    };
+    const onUp = () => { isDraggingBar.current = false; };
+    globalThis.addEventListener("mousemove", onMove);
+    globalThis.addEventListener("mouseup", onUp);
+    return () => {
+      globalThis.removeEventListener("mousemove", onMove);
+      globalThis.removeEventListener("mouseup", onUp);
+    };
+  }, [THUMB_TRAVEL, SCROLL_RANGE]);
+
   // Attach all pointer + wheel listeners imperatively to avoid JSX handler lint warnings
   useEffect(() => {
     const el = columnsRef.current;
@@ -137,42 +178,87 @@ export function Testimonials({ testimonials }: Readonly<TestimonialsProps>) {
           </p>
         </motion.div>
 
-        {/* Columns */}
-        <div
-          ref={columnsRef}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "20px",
-            maxHeight: "680px",
-            overflow: "hidden",
-            maskImage: "linear-gradient(to bottom, transparent, black 18%, black 82%, transparent)",
-            WebkitMaskImage: "linear-gradient(to bottom, transparent, black 18%, black 82%, transparent)",
-            cursor: isHovered ? "grab" : "default",
-          }}
-        >
-          <TestimonialsColumn
-            testimonials={firstColumn}
-            duration={15}
-            paused={isHovered}
-            wheelDelta={wheelDelta}
-          />
-          <TestimonialsColumn
-            testimonials={secondColumn}
-            duration={19}
-            paused={isHovered}
-            wheelDelta={wheelDelta}
-            className="hidden-mobile"
-          />
-          <TestimonialsColumn
-            testimonials={thirdColumn}
-            duration={17}
-            paused={isHovered}
-            wheelDelta={wheelDelta}
-            className="hidden-tablet"
-          />
+        {/* Columns + Scrollbar */}
+        <div style={{ display: "flex", gap: "12px", alignItems: "flex-start", justifyContent: "center" }}>
+          <section
+            ref={columnsRef}
+            aria-label="Testimonials"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "20px",
+              maxHeight: "680px",
+              overflow: "hidden",
+              maskImage: "linear-gradient(to bottom, transparent, black 18%, black 82%, transparent)",
+              WebkitMaskImage: "linear-gradient(to bottom, transparent, black 18%, black 82%, transparent)",
+              cursor: isHovered ? "grab" : "default",
+            }}
+          >
+            <TestimonialsColumn
+              testimonials={firstColumn}
+              duration={15}
+              paused={isHovered}
+              wheelDelta={wheelDelta}
+            />
+            <TestimonialsColumn
+              testimonials={secondColumn}
+              duration={19}
+              paused={isHovered}
+              wheelDelta={wheelDelta}
+              className="hidden-mobile"
+            />
+            <TestimonialsColumn
+              testimonials={thirdColumn}
+              duration={17}
+              paused={isHovered}
+              wheelDelta={wheelDelta}
+              className="hidden-tablet"
+            />
+          </section>
+
+          {/* Visible Scrollbar */}
+          <div
+            role="scrollbar"
+            aria-controls="testimonials-columns"
+            aria-valuenow={Math.round((thumbTop / THUMB_TRAVEL) * 100)}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            tabIndex={0}
+            onClick={handleTrackClick}
+            onMouseDown={handleThumbMouseDown}
+            onKeyDown={(e) => {
+              const step = SCROLL_RANGE / 10;
+              if (e.key === "ArrowDown") setWheelDelta((p) => p + step / 0.6);
+              if (e.key === "ArrowUp") setWheelDelta((p) => p - step / 0.6);
+            }}
+            style={{
+              width: "6px",
+              height: `${TRACK_H}px`,
+              background: "rgba(14,165,198,0.12)",
+              borderRadius: "3px",
+              position: "relative",
+              cursor: "pointer",
+              flexShrink: 0,
+              border: "1px solid rgba(14,165,198,0.2)",
+              outline: "none",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                width: "6px",
+                height: `${THUMB_H}px`,
+                top: `${thumbTop}px`,
+                background: "linear-gradient(180deg, #0ea5c6, #0d6779)",
+                borderRadius: "3px",
+                cursor: "grab",
+                boxShadow: "0 0 8px rgba(14,165,198,0.5)",
+                transition: isDraggingBar.current ? "none" : "top 0.1s linear",
+              }}
+            />
+          </div>
         </div>
 
         <style>{`

@@ -11,6 +11,7 @@ export interface ClientDocument {
   title: string;
   type: string;
   fileUrl: string;
+  year?: number;
   date?: string;
   description?: string;
 }
@@ -20,6 +21,7 @@ export interface Client {
   slug: string;
   description: string;
   industry: string;
+  region?: string;
   logo?: { asset: { _ref: string }; alt?: string };
   website?: string;
   featured?: boolean;
@@ -152,6 +154,7 @@ const clientFields = `
   name,
   "slug": slug.current,
   industry,
+  region,
   description,
   logo,
   website,
@@ -162,6 +165,7 @@ const clientFields = `
   documents[] {
     title,
     type,
+    year,
     "fileUrl": file.asset->url,
     date,
     description
@@ -183,6 +187,42 @@ export async function getClientBySlug(slug: string): Promise<Client | null> {
 export async function getClientsByIndustry(industry: string): Promise<Client[]> {
   const clients = await getAllClients();
   return clients.filter((c) => c.industry === industry);
+}
+
+// ─── Jobs (Sanity) ────────────────────────────────────────────────────────────
+
+export interface Job {
+  id: string;
+  title: string;
+  type: string;
+  location: string;
+  exp: string;
+  description: string;
+  requirements: string[];
+  color: { hex: string; rgb: string; dark: string };
+  order?: number;
+}
+
+const allJobsQuery = `
+  *[_type == "job" && active == true] | order(order asc, _createdAt asc) {
+    "id": slug.current,
+    title,
+    type,
+    location,
+    "exp": experience,
+    description,
+    requirements,
+    "color": {
+      "hex": colorHex,
+      "rgb": colorRgb,
+      "dark": colorDark
+    },
+    order
+  }
+`
+
+export async function getAllJobs(): Promise<Job[]> {
+  return sanityClient.fetch(allJobsQuery, {}, { next: { revalidate: 60 } });
 }
 
 // ─── Testimonials (Sanity) ────────────────────────────────────────────────────

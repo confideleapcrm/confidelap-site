@@ -37,38 +37,63 @@ export function ServiceCard({
 }: Readonly<ServiceCardProps>) {
   const Icon = iconMap[iconName] || FiTrendingUp;
   return (
+    //Older Coloer Cards
+  //  style={{         display: "flex",         flexDirection: "column",         justifyContent: "space-between",         height: "100%",         textDecoration: "none",         background: colors.bg,         border: `1.5px solid ${colors.border}`,         borderRadius: "26px",         overflow: "hidden",         padding: "clamp(20px, 3.2vw, 34px)",         transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",         cursor: "pointer",         boxShadow: "0 14px 34px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12)",       }} make yhis cards matt 
     <Link
       href={`/services/${slug}`}
       className="card-hover"
       style={{
+        position: "relative",
+        isolation: "isolate",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
         height: "100%",
         textDecoration: "none",
         background: colors.bg,
+        backgroundImage: `
+          radial-gradient(circle at 20% 15%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 42%),
+          radial-gradient(circle at 78% 84%, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 48%),
+          repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, rgba(0,0,0,0.015) 1px 2px)
+        `,
+        backgroundBlendMode: "soft-light, multiply, normal",
         border: `1.5px solid ${colors.border}`,
         borderRadius: "26px",
         overflow: "hidden",
         padding: "clamp(20px, 3.2vw, 34px)",
         transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
         cursor: "pointer",
-        boxShadow: "0 14px 34px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12)",
+        boxShadow: "0 10px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06)",
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLAnchorElement).style.transform =
           "translateY(-10px)";
         (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-          "0 34px 66px rgba(0, 0, 0, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.2)";
+          "0 20px 44px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.08)";
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLAnchorElement).style.transform =
           "translateY(0)";
         (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-          "0 14px 34px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12)";
+          "0 10px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06)";
       }}
     >
-      <div className="scroll-stack-card-inner">
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: "none",
+          backgroundImage:
+            "radial-gradient(rgba(255,255,255,0.08) 0.45px, transparent 0.65px), radial-gradient(rgba(0,0,0,0.12) 0.35px, transparent 0.55px)",
+          backgroundSize: "3px 3px, 4px 4px",
+          backgroundPosition: "0 0, 1px 1px",
+          opacity: 0.22,
+          mixBlendMode: "overlay",
+        }}
+      />
+      <div className="scroll-stack-card-inner" style={{ position: "relative", zIndex: 1 }}>
         <div>
           <div
             style={{

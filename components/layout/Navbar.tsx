@@ -89,7 +89,7 @@ export default function Navbar() {
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
         border: `1px solid rgba(18,52,63,${scrolled ? '0.15' : '0.1'})`,
-        borderRadius: '999px',
+        borderRadius: mobileOpen ? '20px' : '999px',
         boxShadow: scrolled ? '0 10px 28px rgba(17,57,68,0.09)' : '0 4px 16px rgba(17,57,68,0.05)',
       }}
     >
@@ -260,7 +260,7 @@ export default function Navbar() {
 
         {/* CTA + Hamburger */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
-          <GetStartedButton href="/contact" label="Talk to an Expert" />
+          <GetStartedButton href="/contact" label="Talk to an Expert" className="navbar-cta-button" />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             style={{
@@ -348,9 +348,45 @@ export default function Navbar() {
       </AnimatePresence>
 
       <style>{`
+        .navbar-cta-button {
+          min-width: 220px;
+        }
+
+        @media (max-width: 1160px) {
+          .navbar-cta-button {
+            min-width: 190px !important;
+            padding-left: 14px !important;
+            padding-right: 46px !important;
+            font-size: 0.88rem !important;
+          }
+        }
+
+        @media (max-width: 1020px) {
+          .navbar-cta-button {
+            min-width: 168px !important;
+            padding-left: 12px !important;
+            padding-right: 42px !important;
+            font-size: 0.82rem !important;
+            height: 40px !important;
+          }
+        }
+
         @media (max-width: 900px) {
           .navbar-desktop { display: none !important; }
           .navbar-hamburger { display: flex !important; }
+          .navbar-cta-button {
+            min-width: 150px !important;
+            font-size: 0.78rem !important;
+            height: 38px !important;
+            padding-left: 10px !important;
+            padding-right: 38px !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .navbar-cta-button {
+            display: none !important;
+          }
         }
       `}</style>
     </header>
