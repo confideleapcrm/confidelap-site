@@ -22,8 +22,7 @@
         { "label": "Investor Relation Advisory", "href": "/services/investor-relations" },
         { "label": "Digital Marketing", "href": "/services/digital-marketing" },
         { "label": "Public Relations", "href": "/services/public-relations" },
-        { "label": "Annual Report", "href": "/services/annual-report" },
-        { "label": "Podcast Solutions", "href": "/services/podcast" }
+        { "label": "Annual Report", "href": "/services/annual-report" }
       ]
     },
     { "label": "Blog", "href": "/blog" },

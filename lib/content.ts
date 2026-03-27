@@ -79,7 +79,7 @@ export async function getSiteData(): Promise<SiteData> {
 // ─── Services ─────────────────────────────────────────────────────────────────
 
 export async function getAllServices(): Promise<Service[]> {
-  return servicesData as Service[];
+  return (servicesData as Service[]).filter((s) => s.slug !== "podcast");
 }
 
 export async function getServiceBySlug(slug: string): Promise<Service | null> {

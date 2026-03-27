@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IconType } from "react-icons";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { MdEmail } from "react-icons/md";
+// import { IconType } from "react-icons";
+// import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+// import { FaXTwitter } from "react-icons/fa6";
+// import { MdEmail } from "react-icons/md";
 
 import { getAllServices, getFeaturedPosts, getAllClients, getTestimonials } from "../lib/content";
 import siteData from "../content/site.json";
@@ -18,18 +18,18 @@ export const metadata: Metadata = {
     "ConfideLeap specializes in Investor Relations, Digital Marketing & Public Relations, helping businesses enhance their market presence and build strong investor confidence.",
 };
 
-const socialLinks = [
-  { href: siteData.social.facebook, label: "Facebook", iconClass: "e-fab-facebook-f", Icon: FaFacebookF },
-  { href: siteData.social.twitter, label: "Twitter", iconClass: "e-fab-x-twitter", Icon: FaXTwitter },
-  { href: siteData.social.instagram, label: "Instagram", iconClass: "e-fab-instagram", Icon: FaInstagram },
-  { href: "https://www.linkedin.com", label: "LinkedIn", iconClass: "e-fab-linkedin-in", Icon: FaLinkedinIn },
-  { href: "mailto:info@confideleap.com", label: "Email", iconClass: "e-fas-envelope", Icon: MdEmail },
-  { href: "https://www.youtube.com", label: "YouTube", iconClass: "e-fab-youtube", Icon: FaYoutube },
-];
+// const socialLinks = [
+//   { href: siteData.social.facebook, label: "Facebook", iconClass: "e-fab-facebook-f", Icon: FaFacebookF },
+//   { href: siteData.social.twitter, label: "Twitter", iconClass: "e-fab-x-twitter", Icon: FaXTwitter },
+//   { href: siteData.social.instagram, label: "Instagram", iconClass: "e-fab-instagram", Icon: FaInstagram },
+//   { href: "https://www.linkedin.com", label: "LinkedIn", iconClass: "e-fab-linkedin-in", Icon: FaLinkedinIn },
+//   { href: "mailto:info@confideleap.com", label: "Email", iconClass: "e-fas-envelope", Icon: MdEmail },
+//   { href: "https://www.youtube.com", label: "YouTube", iconClass: "e-fab-youtube", Icon: FaYoutube },
+// ];
 
-function SocialIcon({ Icon, iconClass }: Readonly<{ Icon: IconType; iconClass: string }>) {
-  return <Icon aria-hidden="true" className={`e-font-icon-svg ${iconClass}`} size={14} />;
-}
+// function SocialIcon({ Icon, iconClass }: Readonly<{ Icon: IconType; iconClass: string }>) {
+//   return <Icon aria-hidden="true" className={`e-font-icon-svg ${iconClass}`} size={14} />;
+// }
 
 const serviceIconBySlug: Record<string, string> = {
   "investor-relations": "trending-up",
@@ -98,7 +98,7 @@ export default async function HomePage() {
           <span className="hero-bg-sweep" />
         </div>
 
-        <aside className="social-rail" aria-label="Social links">
+        {/* <aside className="social-rail" aria-label="Social links">
           <span className="social-rail-line" />
           <ul className="social-rail-list">
             {socialLinks.map((social) => (
@@ -116,7 +116,7 @@ export default async function HomePage() {
             ))}
           </ul>
           <span className="social-rail-line" />
-        </aside>
+        </aside> */}
 
         <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "64px", paddingBottom: "64px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "40px", alignItems: "center" }}>
